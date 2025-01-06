@@ -23,20 +23,35 @@ body {
 
 .navbar .ul {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     width: 1100px;
+    gap: 30px;
 }
 
 .navbar li {
-    margin-right: 30px;
+    margin: auto;
+}
+
+.navbar .ul div {
+    display: flex;
+    align-items: center;
+    margin: auto;
 }
 
 .navbar .ul div a {
     color: white;
     font-size: 30px;
     text-decoration: none;
-   
+    margin: auto;
+}
+
+/* Style for the Plants link container */
+.navbar .ul div:first-child {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: auto;
 }
 
 /* Navbar and Logo */
@@ -111,10 +126,38 @@ body {
     font-size: 1.1rem;
 }
 
-/* Ensure proper spacing between categories */
+/* Category Headings */
 .plantname_heading {
     margin: 40px 0 20px 0;
     width: 100%;
+    text-align: center;
+    position: relative;
+    padding: 20px 0;
+}
+
+.plant_heading {
+    display: inline-block;
+    position: relative;
+    padding: 10px 0;
+}
+
+.plant_heading::before,
+.plant_heading::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120%;
+    height: 2px;
+    background-color: #6e6e6e;
+}
+
+.plant_heading::before {
+    top: 0;
+}
+
+.plant_heading::after {
+    bottom: 0;
 }
 
 /* Responsive adjustments */

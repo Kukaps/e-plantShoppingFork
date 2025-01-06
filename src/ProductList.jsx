@@ -230,35 +230,43 @@ function ProductList() {
    }
    const styleObjUl={
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
-    width: '1100px',
+    width: '100%',
+    position: 'relative',
    }
    const styleA={
     color: 'white',
     fontSize: '30px',
     textDecoration: 'none',
    }
+   const plantsLinkStyle = {
+    position: 'absolute',
+    left: '40%',
+    transform: 'translateX(-50%)',
+   }
+   const cartContainerStyle = {
+    marginLeft: 'auto',
+   }
    const handleCartClick = (e) => {
     e.preventDefault();
-    setShowCart(true); // Set showCart to true when cart icon is clicked
-};
-const handlePlantsClick = (e) => {
-    e.preventDefault();
-    setShowPlants(true); // Set showAboutUs to true when "About Us" link is clicked
-    setShowCart(false); // Hide the cart when navigating to About Us
-};
+    setShowCart(true);
+  };
 
-   const handleContinueShopping = (e) => {
+  const handlePlantsClick = (e) => {
     e.preventDefault();
     setShowCart(false);
   };
 
+  const handleContinueShopping = () => {
+    setShowCart(false);
+  };
+
   const handleAddToCart = (plant) => {
-    // Dispatch the plant to the cart
+    // Dispatch to Redux store
     dispatch(addItem({ ...plant, quantity: 1 }));
     
-    // Update local state to show item was added
+    // Update local state for UI feedback
     setAddedToCart(prev => ({
       ...prev,
       [plant.name]: true
@@ -281,8 +289,10 @@ const handlePlantsClick = (e) => {
               
             </div>
             <div style={styleObjUl}>
-                <div> <a href="#" onClick={(e)=>handlePlantsClick(e)} style={styleA}>Plants</a></div>
-                <div> 
+                <div style={plantsLinkStyle}> 
+                  <a href="#" onClick={(e)=>handlePlantsClick(e)} style={styleA}>Plants</a>
+                </div>
+                <div style={cartContainerStyle}> 
                   <a href="#" onClick={(e) => handleCartClick(e)} style={styleA}>
                     <h1 className='cart'>
                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" id="IconChangeColor" height="68" width="68">
